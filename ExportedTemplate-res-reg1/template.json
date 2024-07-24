@@ -1,0 +1,40 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "disks_123qwe_name": {
+            "defaultValue": "123qwe",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Compute/disks",
+            "apiVersion": "2023-10-02",
+            "name": "[parameters('disks_123qwe_name')]",
+            "location": "centralindia",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "zones": [
+                "1"
+            ],
+            "properties": {
+                "creationData": {
+                    "createOption": "Empty"
+                },
+                "diskSizeGB": 32,
+                "diskIOPSReadWrite": 500,
+                "diskMBpsReadWrite": 60,
+                "encryption": {
+                    "type": "EncryptionAtRestWithPlatformKey"
+                },
+                "networkAccessPolicy": "AllowAll",
+                "publicNetworkAccess": "Enabled",
+                "dataAccessAuthMode": "None"
+            }
+        }
+    ]
+}
